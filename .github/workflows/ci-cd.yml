@@ -52,42 +52,27 @@ jobs:
       contents: read
 
     steps:
-      - name: Checkout source
-        uses: actions/checkout@v5
-        with:
-          persist-credentials: false
-
-      - name: Prepare SSH key
+      - name: Deploy API container via SSH Action
+        uses: appleboy/ssh-action@v1.2.0
         env:
-          VPS_SSH_PRIVATE_KEY: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
-        run: |
-          install -m 700 -d ~/.ssh
-          printf '%s\n' "$VPS_SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-
-      - name: Add VPS host key
-        env:
-          VPS_HOST: ${{ secrets.VPS_HOST }}
-        run: |
-          ssh-keyscan -H "$VPS_HOST" >> ~/.ssh/known_hosts
-
-      - name: Deploy API container via SSH
-        env:
-          VPS_HOST: ${{ secrets.VPS_HOST }}
-          VPS_USER: ${{ secrets.VPS_USER }}
-          VPS_PORT: ${{ secrets.VPS_PORT }}
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/health-api
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
           API_BIND_PORT: ${{ secrets.API_BIND_PORT }}
-        run: |
-          ssh -p "${VPS_PORT:-22}" "${VPS_USER}@${VPS_HOST}" \
-            "set -euo pipefail; \
-            if [ -n '${DOCKERHUB_USERNAME}' ] && [ -n '${DOCKERHUB_TOKEN}' ]; then \
-              echo '${DOCKERHUB_TOKEN}' | sudo docker login --username '${DOCKERHUB_USERNAME}' --password-stdin; \
-            fi; \
-            sudo docker pull '${DOCKER_IMAGE}:latest'; \
-            sudo docker rm -f health-api >/dev/null 2>&1 || true; \
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
+          port: ${{ secrets.VPS_PORT }}
+          script_stop: true
+          envs: DOCKERHUB_USERNAME,DOCKERHUB_TOKEN,API_BIND_PORT
+          script: |
+            set -euo pipefail
+            if [ -n "$DOCKERHUB_USERNAME" ] && [ -n "$DOCKERHUB_TOKEN" ]; then
+              echo "$DOCKERHUB_TOKEN" | sudo docker login --username "$DOCKERHUB_USERNAME" --password-stdin
+            fi
+
+            sudo docker pull "$DOCKERHUB_USERNAME/health-api:latest"
+            sudo docker rm -f health-api >/dev/null 2>&1 || true
             sudo docker run -d --name health-api --restart unless-stopped \
-              -p 127.0.0.1:${API_BIND_PORT:-8080}:8080 \
-              '${DOCKER_IMAGE}:latest'"
+              -p "127.0.0.1:${API_BIND_PORT:-8080}:8080" \
+              "$DOCKERHUB_USERNAME/health-api:latest"
