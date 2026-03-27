@@ -12,7 +12,7 @@
     - name: reload nginx
       ansible.builtin.service:
         name: nginx
-        state: reloaded
+        state: restarted
 
   tasks:
     - name: Install required packages
@@ -48,11 +48,11 @@
       ansible.builtin.command: nginx -t
       changed_when: false
 
-    - name: Flush handlers before ensuring service state
-      ansible.builtin.meta: flush_handlers
-
     - name: Ensure Nginx service is running
       ansible.builtin.service:
         name: nginx
         state: started
         enabled: true
+
+    - name: Flush handlers after service is active
+      ansible.builtin.meta: flush_handlers
