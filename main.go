@@ -9,30 +9,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type Health struct {
-	Name      string        `json:"name"`
-	NRP       string        `json:"nrp"`
-	Status    bool          `json:"status"`
-	Timestamp time.Time     `json:"timestamp"`
-	Uptime    time.Duration `json:"uptime"`
-}
-
 var startTime time.Time
-
-var healthSeed = Health{
-	"Jalu Cahyo Senodiputro",
-	"5025241155",
-	true,
-	time.Now(),
-	time.Since(startTime),
-}
 
 func formatUptime(d time.Duration) string {
 	hours := int(d.Hours())
 	minutes := int(d.Minutes())
 	seconds := int(d.Seconds())
 
-    fmt.Println(hours, minutes, seconds)
 	return fmt.Sprintf("%02d:%02d:%02d", hours, minutes, seconds)
 }
 
@@ -50,10 +33,10 @@ func formatStatus(status bool) string {
 
 func getHealth(c *gin.Context) {
 	response := gin.H{
-		"nama":      healthSeed.Name,
-		"nrp":       healthSeed.NRP,
-		"status":    formatStatus(healthSeed.Status),
-		"timestamp": formatTimestamp(healthSeed.Timestamp),
+		"nama":      "Jalu Cahyo Senodiputro",
+		"nrp":       "5025241155",
+		"status":    formatStatus(true),
+		"timestamp": formatTimestamp(time.Now()),
 		"uptime":    formatUptime(time.Since(startTime)),
 	}
 
