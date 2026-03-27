@@ -1,0 +1,1212 @@
+{
+  "responderUsername": "GitHub Copilot",
+  "initialLocation": "panel",
+  "requests": [
+    {
+      "requestId": "request_4861c5c8-8201-4791-b13a-4c9b99137aae",
+      "message": {
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 52
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 53
+            },
+            "text": "make me dockerfile that can run this simple rest api",
+            "kind": "text"
+          }
+        ],
+        "text": "make me dockerfile that can run this simple rest api"
+      },
+      "variableData": {
+        "variables": [
+          {
+            "kind": "file",
+            "value": {
+              "$mid": 1,
+              "fsPath": "/home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+              "external": "file:///home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+              "path": "/home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+              "scheme": "file"
+            },
+            "id": "file:///home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+            "name": "Dockerfile"
+          },
+          {
+            "id": "vscode.customizations.index",
+            "name": "prompt:customizationsIndex",
+            "value": "<skills>\nHere is a list of skills that contain domain specific knowledge on a variety of topics.\nEach skill comes with a description of the topic and a file path that contains the detailed instructions.\nWhen a user asks you to perform a task that falls within the domain of a skill, use the #tool:readFile tool to acquire the full instructions from the file URI.\n<skill>\n<name>agent-customization</name>\n<description>**WORKFLOW SKILL** — Create, update, review, fix, or debug VS Code agent customization files (.instructions.md, .prompt.md, .agent.md, SKILL.md, copilot-instructions.md, AGENTS.md). USE FOR: saving coding preferences; troubleshooting why instructions/skills/agents are ignored or not invoked; configuring applyTo patterns; defining tool restrictions; creating custom agent modes or specialized workflows; packaging domain knowledge; fixing YAML frontmatter syntax. DO NOT USE FOR: general coding questions (use default agent); runtime debugging or error diagnosis; MCP server configuration (use MCP docs directly); VS Code extension development. INVOKES: file system tools (read/write customization files), ask-questions tool (interview user for requirements), subagents for codebase exploration. FOR SINGLE OPERATIONS: For quick YAML frontmatter fixes or creating a single file from a known pattern, edit the file directly — no skill needed.</description>\n<file>copilot-skill:/agent-customization/SKILL.md</file>\n</skill>\n</skills>\n\n\n<agents>\nHere is a list of agents that can be used when running a subagent.\nEach agent has optionally a description with the agent's purpose and expertise. When asked to run a subagent, choose the most appropriate agent from this list.\nUse the #tool:runSubagent tool with the agent name to run the subagent.\n<agent>\n<name>Explore</name>\n<description>Fast read-only codebase exploration and Q&A subagent. Prefer over manually chaining multiple search and file-reading operations to avoid cluttering the main conversation. Safe to call in parallel. Specify thoroughness: quick, medium, or thorough.</description>\n<argumentHint>Describe WHAT you're looking for and desired thoroughness (quick/medium/thorough)</argumentHint>\n</agent>\n</agents>\n\n",
+            "kind": "promptText",
+            "modelDescription": "Chat customizations index",
+            "automaticallyAdded": true,
+            "toolReferences": [
+              {
+                "kind": "tool",
+                "id": "copilot_readFile",
+                "name": "Read File",
+                "range": {
+                  "start": 291,
+                  "endExclusive": 305
+                }
+              },
+              {
+                "kind": "tool",
+                "id": "runSubagent",
+                "icon": {
+                  "id": "organization"
+                },
+                "name": "Run Subagent",
+                "range": {
+                  "start": 1696,
+                  "endExclusive": 1713
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "response": [
+        {
+          "kind": "mcpServersStarting",
+          "didStartServerIds": []
+        },
+        {
+          "kind": "thinking",
+          "value": [],
+          "id": "N3OPJNu4sSRY9lJxjWbrtMarxGYeSx7Uij0MN3jXDlelXtyO8Ue9PipO4/FgUyeQ/066OpohOjnfsZxRAGm6HJoE+OV9a+mNudIwejnrJWWpttuyhKlDKN/POUIuUhiCUlsG5jJ6XyDD6NJdKDZgftLTlqzKBK6gyoXZkMi4tOIM5XBGB3z0ttkSgtWEO1OCGgULJry59RSJN3xJxIibv406DdOYTbkXQODrW+2/dMyXmJGI8HUWINpnEydTrB15LHuDpnSakz9JEPpiwOMVAjGo6emgTh/3uZTyfyKB1xdxgSeRAnTCoXbIfnMafv7qUa5O0a8h4LEDJpwCz+BXpbYpW5zhUZ2q7XBBl+1pcut0QsZHRZhiDWkjvIHI8oNoZeNmbpr9+xKL/BkBcdJvCAuQ5yedHg=="
+        },
+        {
+          "kind": "thinking",
+          "value": "",
+          "id": "",
+          "metadata": {
+            "vscodeReasoningDone": true,
+            "stopReason": "text"
+          }
+        },
+        {
+          "value": "I’ll replace the current Dockerfile with a complete multi-stage build that compiles your Go API and runs it in a minimal runtime image. I’m quickly checking the app entrypoint and exposed port first so the container starts correctly.",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/gryd/Dev/go/oprec-netics/health-api/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "toolInvocationSerialized",
+          "invocationMessage": {
+            "value": "Reading [](file:///home/gryd/Dev/go/oprec-netics/health-api/main.go)",
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "supportAlertSyntax": false,
+            "uris": {
+              "file:///home/gryd/Dev/go/oprec-netics/health-api/main.go": {
+                "$mid": 1,
+                "path": "/home/gryd/Dev/go/oprec-netics/health-api/main.go",
+                "scheme": "file"
+              }
+            }
+          },
+          "pastTenseMessage": {
+            "value": "Read [](file:///home/gryd/Dev/go/oprec-netics/health-api/main.go)",
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "supportAlertSyntax": false,
+            "uris": {
+              "file:///home/gryd/Dev/go/oprec-netics/health-api/main.go": {
+                "$mid": 1,
+                "path": "/home/gryd/Dev/go/oprec-netics/health-api/main.go",
+                "scheme": "file"
+              }
+            }
+          },
+          "isConfirmed": {
+            "type": 1
+          },
+          "isComplete": true,
+          "source": {
+            "type": "internal",
+            "label": "Built-In"
+          },
+          "toolCallId": "a4a99f2c-41f0-4a0b-ad17-57d10f5f0a58",
+          "toolId": "copilot_readFile",
+          "generatedTitle": "Reviewed 3 files"
+        },
+        {
+          "kind": "toolInvocationSerialized",
+          "invocationMessage": {
+            "value": "Reading [](file:///home/gryd/Dev/go/oprec-netics/health-api/go.mod)",
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "supportAlertSyntax": false,
+            "uris": {
+              "file:///home/gryd/Dev/go/oprec-netics/health-api/go.mod": {
+                "$mid": 1,
+                "path": "/home/gryd/Dev/go/oprec-netics/health-api/go.mod",
+                "scheme": "file"
+              }
+            }
+          },
+          "pastTenseMessage": {
+            "value": "Read [](file:///home/gryd/Dev/go/oprec-netics/health-api/go.mod)",
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "supportAlertSyntax": false,
+            "uris": {
+              "file:///home/gryd/Dev/go/oprec-netics/health-api/go.mod": {
+                "$mid": 1,
+                "path": "/home/gryd/Dev/go/oprec-netics/health-api/go.mod",
+                "scheme": "file"
+              }
+            }
+          },
+          "isConfirmed": {
+            "type": 1
+          },
+          "isComplete": true,
+          "source": {
+            "type": "internal",
+            "label": "Built-In"
+          },
+          "toolCallId": "33bc8cd5-2737-48dc-b3a8-cc523376d714",
+          "toolId": "copilot_readFile",
+          "generatedTitle": "Reviewed 3 files"
+        },
+        {
+          "kind": "toolInvocationSerialized",
+          "invocationMessage": {
+            "value": "Reading [](file:///home/gryd/Dev/go/oprec-netics/health-api/Dockerfile)",
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "supportAlertSyntax": false,
+            "uris": {
+              "file:///home/gryd/Dev/go/oprec-netics/health-api/Dockerfile": {
+                "$mid": 1,
+                "path": "/home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+                "scheme": "file"
+              }
+            }
+          },
+          "pastTenseMessage": {
+            "value": "Read [](file:///home/gryd/Dev/go/oprec-netics/health-api/Dockerfile)",
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "supportAlertSyntax": false,
+            "uris": {
+              "file:///home/gryd/Dev/go/oprec-netics/health-api/Dockerfile": {
+                "$mid": 1,
+                "path": "/home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+                "scheme": "file"
+              }
+            }
+          },
+          "isConfirmed": {
+            "type": 1
+          },
+          "isComplete": true,
+          "source": {
+            "type": "internal",
+            "label": "Built-In"
+          },
+          "toolCallId": "72bc7c2f-8d01-404c-b714-04c76ac7c504",
+          "toolId": "copilot_readFile",
+          "generatedTitle": "Reviewed 3 files"
+        },
+        {
+          "kind": "thinking",
+          "value": [],
+          "id": "a3UGmT0pb6m8I9qtSlfgWAFx6eoy71DMf2TB4W8tLhll36cd9ETLwUkr6x7BTDREAyA8D3l1cZ4wPz6vmq+WPTLtk6DVaBoEo5XO9qGmxwcRxC8v0zeBa0SnJT96i9XEjF0aDStG+xT8hn15Tg+cJQ5xpONMHmYH+HuLyVLs1Vllrl82mJr9tlMKdG98pzyWhV5Tx4IB2ka0NeXDCKAf6SdWoNMrYX1W8AvKKY3znLFW+nV48aWJJr2cFaSTtgJKgsFTdDvG6aGNHeAPd/RI+Fp2WDpfGjo3BY/QEZmpx3OB15Z0/VjRRfVUwMEdgsv3NWDrLoPxXZLEMerEeViAok7LrRCYYbl8aSsWFRyFhmqoUuEFU6Fhkvk8zkDrMG4fhPXpq45/ax3CGxMfMuzHMx9gw4wlDA=="
+        },
+        {
+          "kind": "thinking",
+          "value": "",
+          "id": "",
+          "metadata": {
+            "vscodeReasoningDone": true,
+            "stopReason": "text"
+          }
+        },
+        {
+          "value": "I found the server setup: it listens on Gin default port 8080 and serves /health. Next I’m writing a production-ready Dockerfile with dependency caching and a lightweight runtime image.",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/gryd/Dev/go/oprec-netics/health-api/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "toolInvocationSerialized",
+          "invocationMessage": {
+            "value": "Reading [](file:///home/gryd/Dev/go/oprec-netics/health-api)",
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "supportAlertSyntax": false,
+            "uris": {
+              "file:///home/gryd/Dev/go/oprec-netics/health-api": {
+                "$mid": 1,
+                "path": "/home/gryd/Dev/go/oprec-netics/health-api",
+                "scheme": "file"
+              }
+            }
+          },
+          "pastTenseMessage": {
+            "value": "Read [](file:///home/gryd/Dev/go/oprec-netics/health-api)",
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "supportAlertSyntax": false,
+            "uris": {
+              "file:///home/gryd/Dev/go/oprec-netics/health-api": {
+                "$mid": 1,
+                "path": "/home/gryd/Dev/go/oprec-netics/health-api",
+                "scheme": "file"
+              }
+            }
+          },
+          "isConfirmed": {
+            "type": 1
+          },
+          "isComplete": true,
+          "source": {
+            "type": "internal",
+            "label": "Built-In"
+          },
+          "toolCallId": "e739a2c9-7a0d-4195-a62f-86043483de8a",
+          "toolId": "copilot_listDirectory",
+          "generatedTitle": "Reviewed health-api and updated Dockerfile"
+        },
+        {
+          "kind": "thinking",
+          "value": [],
+          "id": "9k9EJe6OLzqCXN84mFj+P3Lik7QpG7ZQIt70uTFXpj6CAwEOpc8DIOH1OK6LWhD55WN8H6apal1q56eirFuRKku8KORxLR8/ZMqW++V1mYNcxc66kPuBzytnjGwl1Xk3fxroJqz2ZVzJGzU26Pg0Y3t3BxobMXcFF71VD+93vNN2pnKdCJdzKrQl1e0ET83wT4PsZXz6cAdGq7KPkYrjTGgTGisUW2RkBbi2NUcAivpXcVwj70g+rTDKAsJqXbxkKxD8xNf2M98WVHBtAKX7Nlgixok7t3LCa16VIyORJAixdMoDGCuTdf7pgeXGpdVfmj8ALNvM3FPv5YQ3PJ1ittqC0IQNkZ7e7Y0oTAJndq/zAo9vOI7Gd2fLYEhR3xeYtbzvMeEgCl4etmChjTJwLH/6FiPnRw=="
+        },
+        {
+          "kind": "thinking",
+          "value": "",
+          "id": "",
+          "metadata": {
+            "vscodeReasoningDone": true,
+            "stopReason": "other"
+          }
+        },
+        {
+          "kind": "toolInvocationSerialized",
+          "presentation": "hidden",
+          "invocationMessage": {
+            "value": "Generating patch (32 lines) in [](file:///home/gryd/Dev/go/oprec-netics/health-api/Dockerfile)",
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "supportAlertSyntax": false,
+            "uris": {
+              "file:///home/gryd/Dev/go/oprec-netics/health-api/Dockerfile": {
+                "$mid": 1,
+                "path": "/home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+                "scheme": "file"
+              }
+            }
+          },
+          "isConfirmed": {
+            "type": 1
+          },
+          "isComplete": true,
+          "source": {
+            "type": "internal",
+            "label": "Built-In"
+          },
+          "toolCallId": "call_QlV6jjqlHxyOZHKJh3nmeQ68",
+          "toolId": "copilot_applyPatch"
+        },
+        {
+          "value": "\n```\n",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "supportAlertSyntax": false,
+          "uris": {}
+        },
+        {
+          "id": "28c08dfe-66e9-49d5-b0b1-1b39fd307a0e",
+          "kind": "undoStop"
+        },
+        {
+          "kind": "codeblockUri",
+          "uri": {
+            "$mid": 1,
+            "fsPath": "/home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+            "external": "file:///home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+            "path": "/home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+            "scheme": "file"
+          },
+          "isEdit": true
+        },
+        {
+          "kind": "textEditGroup",
+          "uri": {
+            "$mid": 1,
+            "fsPath": "/home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+            "external": "file:///home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+            "path": "/home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+            "scheme": "file"
+          },
+          "edits": [
+            [
+              {
+                "text": "FROM golang:1.26.1 AS builder\n\nWORKDIR /src\n\nCOPY go.mod go.sum ./\nRUN go mod download\n\nCOPY . .\nRUN CGO_ENABLED=0 GOOS=linux go build -o /app/health-api .\n\nFROM alpine:3.22\n\nWORKDIR /app\n\nRUN adduser -D -H appuser\n\nCOPY --from=builder /app/health-api /app/health-api\n\nEXPOSE 8080\n\nUSER appuser\n\nENTRYPOINT [\"/app/health-api\"]",
+                "range": {
+                  "startLineNumber": 1,
+                  "startColumn": 1,
+                  "endLineNumber": 24,
+                  "endColumn": 1
+                }
+              }
+            ],
+            []
+          ],
+          "done": true
+        },
+        {
+          "value": "\n```\n",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "supportAlertSyntax": false,
+          "uris": {}
+        },
+        {
+          "kind": "thinking",
+          "value": [],
+          "id": "al2Ci/maZHQef84tYR4y4Vyo9Q8FvzvhtQ4JC2f6w8oBbgYjRJKJuTUFF+VjT5ViQyE2MZKooc6aEoG2EBNnjPUUkaxE2Nz2XDMzofO4U1APi6H/bhnvhSMnBXV4XAqpYGjEkzoKb/Lj/e1WoN2bi7Z70raoeBUkAwzoTFGzKvLuGFIXfa+5LhMoY+UgcIoRTyP98SG020so8tSouma1uOVpmrTEVZwG9JgmMSBPm3bdJ3WfOG9CdJovunlVvc3cvtruCQYkjMnw3kSdgF+OPEf3xE5zDWbbPBqKk6MUV8OiPVElW1dJDhJ9S1B4jVmVW/WfV9gb9bJhC+61NZkFMDC7VHcO7pCOqSC5x/bBoekCzFfigQzkm4OqFySO//XmIYdKuulPAjUkVFNLzm85wqEJlK2Ifw=="
+        },
+        {
+          "kind": "thinking",
+          "value": "",
+          "id": "",
+          "metadata": {
+            "vscodeReasoningDone": true,
+            "stopReason": "text"
+          }
+        },
+        {
+          "value": "I’ve updated the file and now I’m validating it by attempting a Docker build so we can catch any syntax or runtime-image issues immediately.",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/gryd/Dev/go/oprec-netics/health-api/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "toolInvocationSerialized",
+          "invocationMessage": {
+            "value": "Running ` docker build \\-t health\\-api:local .`",
+            "isTrusted": false,
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "supportAlertSyntax": false
+          },
+          "isConfirmed": {
+            "type": 0
+          },
+          "isComplete": true,
+          "source": {
+            "type": "internal",
+            "label": "Built-In"
+          },
+          "toolSpecificData": {
+            "kind": "terminal",
+            "terminalToolSessionId": "d42ee8b8-79a0-4ac0-bab8-a0a91c181f1a",
+            "terminalCommandId": "tool-e8a5ebf1-75e8-47e5-b07b-408b206034c3",
+            "commandLine": {
+              "original": "docker build -t health-api:local .",
+              "toolEdited": " docker build -t health-api:local .",
+              "forDisplay": " docker build -t health-api:local ."
+            },
+            "cwd": {
+              "$mid": 1,
+              "fsPath": "/home/gryd/Dev/go/oprec-netics/health-api",
+              "external": "file:///home/gryd/Dev/go/oprec-netics/health-api",
+              "path": "/home/gryd/Dev/go/oprec-netics/health-api",
+              "scheme": "file"
+            },
+            "language": "sh",
+            "isBackground": false,
+            "confirmation": {
+              "commandLine": "docker build -t health-api:local ."
+            },
+            "terminalCommandState": {
+              "timestamp": 1774607108932
+            }
+          },
+          "toolCallId": "call_cVrpyYTqzzBMEBSAe6NLQu6C",
+          "toolId": "run_in_terminal"
+        }
+      ],
+      "agent": {
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "extensionVersion": "0.40.1",
+        "publisherDisplayName": "GitHub",
+        "extensionPublisherId": "GitHub",
+        "extensionDisplayName": "GitHub Copilot Chat",
+        "id": "github.copilot.editsAgent",
+        "description": "Edit files in your workspace in agent mode",
+        "when": "config.chat.agent.enabled",
+        "metadata": {
+          "themeIcon": {
+            "id": "tools"
+          },
+          "hasFollowups": false,
+          "supportIssueReporting": false
+        },
+        "name": "agent",
+        "fullName": "GitHub Copilot",
+        "isDefault": true,
+        "locations": [
+          "panel"
+        ],
+        "modes": [
+          "agent"
+        ],
+        "slashCommands": [
+          {
+            "name": "compact",
+            "description": "Free up context by compacting the conversation history. Optionally include extra instructions for compaction."
+          },
+          {
+            "name": "explain",
+            "description": "Explain how the code in your active editor works"
+          },
+          {
+            "name": "tests",
+            "description": "Generate unit tests for the selected code",
+            "disambiguation": [
+              {
+                "category": "create_tests",
+                "description": "The user wants to generate unit tests.",
+                "examples": [
+                  "Generate tests for my selection using pytest."
+                ]
+              }
+            ]
+          },
+          {
+            "name": "fix",
+            "description": "Propose a fix for the problems in the selected code",
+            "sampleRequest": "There is a problem in this code. Rewrite the code to show it with the bug fixed."
+          },
+          {
+            "name": "new",
+            "description": "Scaffold code for a new file or project in a workspace",
+            "sampleRequest": "Create a RESTful API server using typescript",
+            "isSticky": true,
+            "disambiguation": [
+              {
+                "category": "create_new_workspace_or_extension",
+                "description": "The user wants to create a complete Visual Studio Code workspace from scratch, such as a new application or a Visual Studio Code extension. Use this category only if the question relates to generating or creating new workspaces in Visual Studio Code. Do not use this category for updating existing code or generating sample code snippets",
+                "examples": [
+                  "Scaffold a Node server.",
+                  "Create a sample project which uses the fileSystemProvider API.",
+                  "react application"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "newNotebook",
+            "description": "Create a new Jupyter Notebook",
+            "sampleRequest": "How do I create a notebook to load data from a csv file?",
+            "disambiguation": [
+              {
+                "category": "create_jupyter_notebook",
+                "description": "The user wants to create a new Jupyter notebook in Visual Studio Code.",
+                "examples": [
+                  "Create a notebook to analyze this CSV file."
+                ]
+              }
+            ]
+          },
+          {
+            "name": "setupTests",
+            "description": "Set up tests in your project (Experimental)",
+            "sampleRequest": "add playwright tests to my project",
+            "when": "config.github.copilot.chat.setupTests.enabled",
+            "disambiguation": [
+              {
+                "category": "set_up_tests",
+                "description": "The user wants to configure project test setup, framework, or test runner. The user does not want to fix their existing tests.",
+                "examples": [
+                  "Set up tests for this project."
+                ]
+              }
+            ]
+          }
+        ],
+        "disambiguation": []
+      },
+      "timestamp": 1774605452177,
+      "modelId": "copilot/auto",
+      "modeInfo": {
+        "kind": "agent",
+        "isBuiltin": true,
+        "modeId": "agent",
+        "modeName": "agent",
+        "permissionLevel": "default"
+      },
+      "responseId": "response_85b972e0-772d-48ab-94ba-c43514219fbd",
+      "result": {},
+      "responseMarkdownInfo": [],
+      "followups": [],
+      "modelState": {
+        "value": 2,
+        "completedAt": 1774607108936
+      },
+      "contentReferences": [],
+      "codeCitations": [],
+      "timeSpentWaiting": 1609968
+    },
+    {
+      "requestId": "request_e35a4988-c9a2-4431-a4ec-4485a89e0ce2",
+      "message": {
+        "parts": [
+          {
+            "range": {
+              "start": 0,
+              "endExclusive": 121
+            },
+            "editorRange": {
+              "startLineNumber": 1,
+              "startColumn": 1,
+              "endLineNumber": 1,
+              "endColumn": 122
+            },
+            "text": "why does this app return the timestamp in UTC if run in docker, it display the correct timezone (WIB) if i run it locally",
+            "kind": "text"
+          }
+        ],
+        "text": "why does this app return the timestamp in UTC if run in docker, it display the correct timezone (WIB) if i run it locally"
+      },
+      "variableData": {
+        "variables": [
+          {
+            "kind": "file",
+            "value": {
+              "$mid": 1,
+              "fsPath": "/home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+              "external": "file:///home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+              "path": "/home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+              "scheme": "file"
+            },
+            "id": "file:///home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+            "name": "Dockerfile"
+          },
+          {
+            "id": "vscode.customizations.index",
+            "name": "prompt:customizationsIndex",
+            "value": "<skills>\nHere is a list of skills that contain domain specific knowledge on a variety of topics.\nEach skill comes with a description of the topic and a file path that contains the detailed instructions.\nWhen a user asks you to perform a task that falls within the domain of a skill, use the #tool:readFile tool to acquire the full instructions from the file URI.\n<skill>\n<name>agent-customization</name>\n<description>**WORKFLOW SKILL** — Create, update, review, fix, or debug VS Code agent customization files (.instructions.md, .prompt.md, .agent.md, SKILL.md, copilot-instructions.md, AGENTS.md). USE FOR: saving coding preferences; troubleshooting why instructions/skills/agents are ignored or not invoked; configuring applyTo patterns; defining tool restrictions; creating custom agent modes or specialized workflows; packaging domain knowledge; fixing YAML frontmatter syntax. DO NOT USE FOR: general coding questions (use default agent); runtime debugging or error diagnosis; MCP server configuration (use MCP docs directly); VS Code extension development. INVOKES: file system tools (read/write customization files), ask-questions tool (interview user for requirements), subagents for codebase exploration. FOR SINGLE OPERATIONS: For quick YAML frontmatter fixes or creating a single file from a known pattern, edit the file directly — no skill needed.</description>\n<file>copilot-skill:/agent-customization/SKILL.md</file>\n</skill>\n</skills>\n\n\n<agents>\nHere is a list of agents that can be used when running a subagent.\nEach agent has optionally a description with the agent's purpose and expertise. When asked to run a subagent, choose the most appropriate agent from this list.\nUse the #tool:runSubagent tool with the agent name to run the subagent.\n<agent>\n<name>Explore</name>\n<description>Fast read-only codebase exploration and Q&A subagent. Prefer over manually chaining multiple search and file-reading operations to avoid cluttering the main conversation. Safe to call in parallel. Specify thoroughness: quick, medium, or thorough.</description>\n<argumentHint>Describe WHAT you're looking for and desired thoroughness (quick/medium/thorough)</argumentHint>\n</agent>\n</agents>\n\n",
+            "kind": "promptText",
+            "modelDescription": "Chat customizations index",
+            "automaticallyAdded": true,
+            "toolReferences": [
+              {
+                "kind": "tool",
+                "id": "copilot_readFile",
+                "name": "Read File",
+                "range": {
+                  "start": 291,
+                  "endExclusive": 305
+                }
+              },
+              {
+                "kind": "tool",
+                "id": "runSubagent",
+                "icon": {
+                  "id": "organization"
+                },
+                "name": "Run Subagent",
+                "range": {
+                  "start": 1696,
+                  "endExclusive": 1713
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "response": [
+        {
+          "kind": "mcpServersStarting",
+          "didStartServerIds": []
+        },
+        {
+          "kind": "thinking",
+          "value": [],
+          "id": "4N3RwlUqA7Av4G6r4J+S6g2c78hKtBSVA4CFd0c13L198mQMtsNupNF/xPPcZC8uVdZsKq0lk2VjjPdbXbKm2MW6C7llCl3h748oe7CXcrubqsDxyQo22NfSLSzIXV7VrwXiQvAu06AZGTtoBSqSLYFM+Keeo4I/v5a/5WK3MsOFO66yy/897pYRvCvB1N9V53ZMm1dmrpVKDcibQR6KTu/IUt2J0WMP4IOFNy1qg/RtYxspWEN8V3KMaMzzZlAd9T+1ryJ/9jUZJ/OiIAu7zCexvSWSQrgIi62+ZcMmzaIBEzMkyJVdVvTdoIT1AzFrqduQVDKy2YBJx9Ptt1zwxJKe2E9G1ZNetB0KXSTP3asPBS9NVIkzoB+6HlvQOKv17+f5jyVARACeBoH01wGCMC3lwFz6nA=="
+        },
+        {
+          "kind": "thinking",
+          "value": "",
+          "id": "",
+          "metadata": {
+            "vscodeReasoningDone": true,
+            "stopReason": "text"
+          }
+        },
+        {
+          "value": "You’re seeing a common container behavior: the app inside Docker is likely using the container’s default timezone (UTC), not your host timezone. I’ll inspect the time handling and then patch the Dockerfile so it uses WIB consistently.",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/gryd/Dev/go/oprec-netics/health-api/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "toolInvocationSerialized",
+          "invocationMessage": {
+            "value": "Reading [](file:///home/gryd/Dev/go/oprec-netics/health-api/main.go)",
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "supportAlertSyntax": false,
+            "uris": {
+              "file:///home/gryd/Dev/go/oprec-netics/health-api/main.go": {
+                "$mid": 1,
+                "path": "/home/gryd/Dev/go/oprec-netics/health-api/main.go",
+                "scheme": "file"
+              }
+            }
+          },
+          "pastTenseMessage": {
+            "value": "Read [](file:///home/gryd/Dev/go/oprec-netics/health-api/main.go)",
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "supportAlertSyntax": false,
+            "uris": {
+              "file:///home/gryd/Dev/go/oprec-netics/health-api/main.go": {
+                "$mid": 1,
+                "path": "/home/gryd/Dev/go/oprec-netics/health-api/main.go",
+                "scheme": "file"
+              }
+            }
+          },
+          "isConfirmed": {
+            "type": 1
+          },
+          "isComplete": true,
+          "source": {
+            "type": "internal",
+            "label": "Built-In"
+          },
+          "toolCallId": "bff06753-70b9-4721-a280-bd530d6174a5",
+          "toolId": "copilot_readFile",
+          "generatedTitle": "Reviewed 2 files"
+        },
+        {
+          "kind": "toolInvocationSerialized",
+          "invocationMessage": {
+            "value": "Reading [](file:///home/gryd/Dev/go/oprec-netics/health-api/Dockerfile)",
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "supportAlertSyntax": false,
+            "uris": {
+              "file:///home/gryd/Dev/go/oprec-netics/health-api/Dockerfile": {
+                "$mid": 1,
+                "path": "/home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+                "scheme": "file"
+              }
+            }
+          },
+          "pastTenseMessage": {
+            "value": "Read [](file:///home/gryd/Dev/go/oprec-netics/health-api/Dockerfile)",
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "supportAlertSyntax": false,
+            "uris": {
+              "file:///home/gryd/Dev/go/oprec-netics/health-api/Dockerfile": {
+                "$mid": 1,
+                "path": "/home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+                "scheme": "file"
+              }
+            }
+          },
+          "isConfirmed": {
+            "type": 1
+          },
+          "isComplete": true,
+          "source": {
+            "type": "internal",
+            "label": "Built-In"
+          },
+          "toolCallId": "28f48571-ce4d-4b3a-9a03-b23e3c0bc7f3",
+          "toolId": "copilot_readFile",
+          "generatedTitle": "Reviewed 2 files"
+        },
+        {
+          "kind": "thinking",
+          "value": [],
+          "id": "uRyaR0SYL7i6LqTH2w8WNpLkQN3zzIc6nGVWuwz0jCExV5nkpD4yVgmhEfdAWxb8GMHiV58Wt6rz69oDZsXYG1KOajxWlswgcEwhPufwiWHWmsRZ1SC67pO86a0QRx3kJmG2hDVQA7gYd+Sq2X16i9cagPjGCwMPlB6Qot0vFqdDx0wgswx1cm3Wp9UyrhbgJzaDQx4IHbL5fiwApV4H+5cMt9kNj7k7pn3PkrPBmJcbduz46X2UbffMVjLduBqRzazsihy3EFJT89qJKzQu3+xvGOgGpHvFT3U3pImsZ5j2kTjqeUcax6EfbZTQZi28UUsEI5LVc3tI6ZBiGB4DWhXlFKt3+X0hXDBtdMvEnlsS85KMwOJWhQYaLgkRNQjc7iD0+WTwK7eVN0zo+3O4dKu6vh4asQ=="
+        },
+        {
+          "kind": "thinking",
+          "value": "",
+          "id": "",
+          "metadata": {
+            "vscodeReasoningDone": true,
+            "stopReason": "text"
+          }
+        },
+        {
+          "value": "I confirmed the code uses ",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/gryd/Dev/go/oprec-netics/health-api/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "inlineReference",
+          "inlineReference": {
+            "name": "time.Now()",
+            "kind": 12,
+            "containerName": "",
+            "location": {
+              "range": {
+                "startLineNumber": 7,
+                "startColumn": 2,
+                "endLineNumber": 7,
+                "endColumn": 2
+              },
+              "uri": {
+                "$mid": 1,
+                "path": "/home/gryd/Dev/go/oprec-netics/health-api/main.go",
+                "scheme": "file"
+              }
+            }
+          },
+          "resolveId": "8ea75dff-1721-4193-88b3-cbf61cf75d2c"
+        },
+        {
+          "value": " and formats it with local timezone, so Docker defaults to UTC unless you configure the container timezone. I’m applying two small fixes now: set container TZ to Asia/Jakarta and make timestamp formatting explicitly use Asia/Jakarta so it stays correct even if runtime TZ changes.",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/gryd/Dev/go/oprec-netics/health-api/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "toolInvocationSerialized",
+          "presentation": "hidden",
+          "invocationMessage": {
+            "value": "Generating patch (13 lines) in [](file:///home/gryd/Dev/go/oprec-netics/health-api/main.go)",
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "supportAlertSyntax": false,
+            "uris": {
+              "file:///home/gryd/Dev/go/oprec-netics/health-api/main.go": {
+                "$mid": 1,
+                "path": "/home/gryd/Dev/go/oprec-netics/health-api/main.go",
+                "scheme": "file"
+              }
+            }
+          },
+          "isConfirmed": {
+            "type": 1
+          },
+          "isComplete": true,
+          "source": {
+            "type": "internal",
+            "label": "Built-In"
+          },
+          "toolCallId": "call_zqMJtUGF9MFdY1temiSYI12W",
+          "toolId": "copilot_applyPatch"
+        },
+        {
+          "value": "\n```\n",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "supportAlertSyntax": false,
+          "uris": {}
+        },
+        {
+          "id": "a36a6a08-f888-4bf4-8eb4-91c2590acc12",
+          "kind": "undoStop"
+        },
+        {
+          "kind": "codeblockUri",
+          "uri": {
+            "$mid": 1,
+            "fsPath": "/home/gryd/Dev/go/oprec-netics/health-api/main.go",
+            "external": "file:///home/gryd/Dev/go/oprec-netics/health-api/main.go",
+            "path": "/home/gryd/Dev/go/oprec-netics/health-api/main.go",
+            "scheme": "file"
+          },
+          "isEdit": true
+        },
+        {
+          "kind": "textEditGroup",
+          "uri": {
+            "$mid": 1,
+            "fsPath": "/home/gryd/Dev/go/oprec-netics/health-api/main.go",
+            "external": "file:///home/gryd/Dev/go/oprec-netics/health-api/main.go",
+            "path": "/home/gryd/Dev/go/oprec-netics/health-api/main.go",
+            "scheme": "file"
+          },
+          "edits": [
+            [
+              {
+                "text": "package main\n\nimport (\n\t\"fmt\"\n\t\"log\"\n\t\"net/http\"\n\t\"time\"\n\n\t\"github.com/gin-gonic/gin\"\n)\n\nvar startTime time.Time\n\nfunc formatUptime(d time.Duration) string {\n\thours := int(d.Hours())\n\tminutes := int(d.Minutes())\n\tseconds := int(d.Seconds())\n\n\treturn fmt.Sprintf(\"%02d:%02d:%02d\", hours, minutes, seconds)\n}\n\nfunc formatTimestamp(t time.Time) string {\n\tloc, err := time.LoadLocation(\"Asia/Jakarta\")\n\tif err != nil {\n\t\treturn t.Format(time.RFC1123)\n\t}\n\n\treturn t.In(loc).Format(time.RFC1123)\n}\n\nfunc formatStatus(status bool) string {\n\tif status {\n\t\treturn \"UP\"\n\t} else {\n\t\treturn \"DOWN\"\n\t}\n}\n\nfunc getHealth(c *gin.Context) {\n\tresponse := gin.H{\n\t\t\"nama\":      \"Jalu Cahyo Senodiputro\",\n\t\t\"nrp\":       \"5025241155\",\n\t\t\"status\":    formatStatus(true),\n\t\t\"timestamp\": formatTimestamp(time.Now()),\n\t\t\"uptime\":    formatUptime(time.Since(startTime)),\n\t}\n\n\tc.IndentedJSON(http.StatusOK, response)\n}\n\nfunc init() {\n\tstartTime = time.Now()\n}\n\nfunc main() {\n\tr := gin.Default()\n\n\tr.GET(\"/health\", getHealth)\n\n\tif err := r.Run(); err != nil {\n\t\tlog.Fatalf(\"failed to run server: %v\", err)\n\t}\n}\n",
+                "range": {
+                  "startLineNumber": 1,
+                  "startColumn": 1,
+                  "endLineNumber": 65,
+                  "endColumn": 1
+                }
+              }
+            ],
+            []
+          ],
+          "done": true,
+          "state": {
+            "sha1": "4ed36ea6fb8e7717369019842fe78835d4a37cee",
+            "applied": 0
+          }
+        },
+        {
+          "value": "\n```\n",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "supportAlertSyntax": false,
+          "uris": {}
+        },
+        {
+          "kind": "toolInvocationSerialized",
+          "presentation": "hidden",
+          "invocationMessage": {
+            "value": "Generating patch (17 lines) in [](file:///home/gryd/Dev/go/oprec-netics/health-api/Dockerfile)",
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "supportAlertSyntax": false,
+            "uris": {
+              "file:///home/gryd/Dev/go/oprec-netics/health-api/Dockerfile": {
+                "$mid": 1,
+                "path": "/home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+                "scheme": "file"
+              }
+            }
+          },
+          "isConfirmed": {
+            "type": 1
+          },
+          "isComplete": true,
+          "source": {
+            "type": "internal",
+            "label": "Built-In"
+          },
+          "toolCallId": "call_QNTtQai5T01uLhli7K8QLgTV",
+          "toolId": "copilot_applyPatch"
+        },
+        {
+          "value": "\n```\n",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "supportAlertSyntax": false,
+          "uris": {}
+        },
+        {
+          "id": "f7cb7795-663f-473c-ab50-e8d7cc0a814c",
+          "kind": "undoStop"
+        },
+        {
+          "kind": "codeblockUri",
+          "uri": {
+            "$mid": 1,
+            "fsPath": "/home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+            "external": "file:///home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+            "path": "/home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+            "scheme": "file"
+          },
+          "isEdit": true
+        },
+        {
+          "kind": "textEditGroup",
+          "uri": {
+            "$mid": 1,
+            "fsPath": "/home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+            "external": "file:///home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+            "path": "/home/gryd/Dev/go/oprec-netics/health-api/Dockerfile",
+            "scheme": "file"
+          },
+          "edits": [
+            [
+              {
+                "text": "FROM golang:1.26.1\n\nWORKDIR /usr/src/app\n\nRUN apt-get update \\\n\t&& apt-get install -y --no-install-recommends tzdata \\\n\t&& rm -rf /var/lib/apt/lists/*\n\nENV TZ=Asia/Jakarta\nRUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone\n\nCOPY go.mod go.sum ./\nRUN go mod download\n\nCOPY . .\nRUN go build -v -o /usr/local/bin/health-api ./\n\nENV GIN_MODE=release\nEXPOSE 8080\n\nCMD [\"health-api\"]\n",
+                "range": {
+                  "startLineNumber": 1,
+                  "startColumn": 1,
+                  "endLineNumber": 23,
+                  "endColumn": 1
+                }
+              }
+            ],
+            []
+          ],
+          "done": true,
+          "state": {
+            "sha1": "4f2407cf744248484e7488d6cd24c3f9689ff231",
+            "applied": 0
+          }
+        },
+        {
+          "value": "\n```\n",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "supportAlertSyntax": false,
+          "uris": {}
+        },
+        {
+          "kind": "thinking",
+          "value": [],
+          "id": "+pxFh28rQtqUWkRhYfamautRj5lAEayneIHoslIWyh8tAu8HCllGC0nV4otSvLPFHjXuftwAO+LW6FrtBRXOZ9rN2qG77kkRAxsICr0sc/maAwgusDrkE+YQBQbF7I+FAec9mSwo+y1BPe5idS1KFH2d/AnDiz83tbpLPu8EPwvq8gHmdmDGQDlCBFfNPRJZrS3ev16iZuon9adaj3M8Ks6jKcGKstL+9rEhzE3fRoY25a1smErQRNM2kyjB6Vas7Fjg4CB3BDS+ChigiHdt6ycw042jO6BqpAxiqCZqbn+IF+BzcTB/aepXP6f1m6WzfKQT7sbuBIqmhMEMtgT+8qa+3oN9tpasLxWRHnFxwJzQnZzfJ2d7wtS0IajzNaZVP82Ffa+8IkeKyMVZtkjoEmKZISaV3A=="
+        },
+        {
+          "kind": "thinking",
+          "value": "",
+          "id": "",
+          "metadata": {
+            "vscodeReasoningDone": true,
+            "stopReason": "text"
+          }
+        },
+        {
+          "value": "I’ve applied the timezone fixes in both app code and container config; next I’ll run a quick local Go check and a Docker build to verify everything works end-to-end.",
+          "supportThemeIcons": false,
+          "supportHtml": false,
+          "baseUri": {
+            "$mid": 1,
+            "path": "/home/gryd/Dev/go/oprec-netics/health-api/",
+            "scheme": "file"
+          }
+        },
+        {
+          "kind": "toolInvocationSerialized",
+          "invocationMessage": {
+            "value": "Running ` go build ./...`",
+            "isTrusted": false,
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "supportAlertSyntax": false
+          },
+          "isConfirmed": {
+            "type": 5
+          },
+          "isComplete": true,
+          "source": {
+            "type": "internal",
+            "label": "Built-In"
+          },
+          "toolSpecificData": {
+            "kind": "terminal",
+            "terminalToolSessionId": "310a5751-c2a0-4ce8-ad03-430048876f58",
+            "terminalCommandId": "tool-75300bc2-3e0f-4783-8683-7ca3f5c67ece",
+            "commandLine": {
+              "original": "go build ./...",
+              "toolEdited": " go build ./...",
+              "forDisplay": " go build ./..."
+            },
+            "cwd": {
+              "$mid": 1,
+              "fsPath": "/home/gryd/Dev/go/oprec-netics/health-api",
+              "external": "file:///home/gryd/Dev/go/oprec-netics/health-api",
+              "path": "/home/gryd/Dev/go/oprec-netics/health-api",
+              "scheme": "file"
+            },
+            "language": "sh",
+            "isBackground": false,
+            "confirmation": {
+              "commandLine": "go build ./..."
+            },
+            "terminalCommandState": {
+              "timestamp": 1774607263288
+            }
+          },
+          "toolCallId": "call_eGCg8dwTip5ZhJ78xHShItnS",
+          "toolId": "run_in_terminal"
+        },
+        {
+          "kind": "toolInvocationSerialized",
+          "invocationMessage": {
+            "value": "Running ` docker build \\-t health\\-api:tz\\-fix .`",
+            "isTrusted": false,
+            "supportThemeIcons": false,
+            "supportHtml": false,
+            "supportAlertSyntax": false
+          },
+          "isComplete": true,
+          "source": {
+            "type": "internal",
+            "label": "Built-In"
+          },
+          "toolSpecificData": {
+            "kind": "terminal",
+            "terminalToolSessionId": "7c8fbd6c-2caf-41a3-99db-19701ea639b1",
+            "terminalCommandId": "tool-f0f249c3-60a4-4474-bb83-c0486e22a1e8",
+            "commandLine": {
+              "original": "docker build -t health-api:tz-fix .",
+              "toolEdited": " docker build -t health-api:tz-fix .",
+              "forDisplay": " docker build -t health-api:tz-fix ."
+            },
+            "cwd": {
+              "$mid": 1,
+              "fsPath": "/home/gryd/Dev/go/oprec-netics/health-api",
+              "external": "file:///home/gryd/Dev/go/oprec-netics/health-api",
+              "path": "/home/gryd/Dev/go/oprec-netics/health-api",
+              "scheme": "file"
+            },
+            "language": "sh",
+            "isBackground": false,
+            "confirmation": {
+              "commandLine": "docker build -t health-api:tz-fix ."
+            }
+          },
+          "toolCallId": "call_oghlvj4C6illpUKLvtspaskF",
+          "toolId": "run_in_terminal",
+          "generatedTitle": "Executed command to build health-api:tz-fix"
+        }
+      ],
+      "agent": {
+        "extensionId": {
+          "value": "GitHub.copilot-chat",
+          "_lower": "github.copilot-chat"
+        },
+        "extensionVersion": "0.40.1",
+        "publisherDisplayName": "GitHub",
+        "extensionPublisherId": "GitHub",
+        "extensionDisplayName": "GitHub Copilot Chat",
+        "id": "github.copilot.editsAgent",
+        "description": "Edit files in your workspace in agent mode",
+        "when": "config.chat.agent.enabled",
+        "metadata": {
+          "themeIcon": {
+            "id": "tools"
+          },
+          "hasFollowups": false,
+          "supportIssueReporting": false
+        },
+        "name": "agent",
+        "fullName": "GitHub Copilot",
+        "isDefault": true,
+        "locations": [
+          "panel"
+        ],
+        "modes": [
+          "agent"
+        ],
+        "slashCommands": [
+          {
+            "name": "compact",
+            "description": "Free up context by compacting the conversation history. Optionally include extra instructions for compaction."
+          },
+          {
+            "name": "explain",
+            "description": "Explain how the code in your active editor works"
+          },
+          {
+            "name": "tests",
+            "description": "Generate unit tests for the selected code",
+            "disambiguation": [
+              {
+                "category": "create_tests",
+                "description": "The user wants to generate unit tests.",
+                "examples": [
+                  "Generate tests for my selection using pytest."
+                ]
+              }
+            ]
+          },
+          {
+            "name": "fix",
+            "description": "Propose a fix for the problems in the selected code",
+            "sampleRequest": "There is a problem in this code. Rewrite the code to show it with the bug fixed."
+          },
+          {
+            "name": "new",
+            "description": "Scaffold code for a new file or project in a workspace",
+            "sampleRequest": "Create a RESTful API server using typescript",
+            "isSticky": true,
+            "disambiguation": [
+              {
+                "category": "create_new_workspace_or_extension",
+                "description": "The user wants to create a complete Visual Studio Code workspace from scratch, such as a new application or a Visual Studio Code extension. Use this category only if the question relates to generating or creating new workspaces in Visual Studio Code. Do not use this category for updating existing code or generating sample code snippets",
+                "examples": [
+                  "Scaffold a Node server.",
+                  "Create a sample project which uses the fileSystemProvider API.",
+                  "react application"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "newNotebook",
+            "description": "Create a new Jupyter Notebook",
+            "sampleRequest": "How do I create a notebook to load data from a csv file?",
+            "disambiguation": [
+              {
+                "category": "create_jupyter_notebook",
+                "description": "The user wants to create a new Jupyter notebook in Visual Studio Code.",
+                "examples": [
+                  "Create a notebook to analyze this CSV file."
+                ]
+              }
+            ]
+          },
+          {
+            "name": "setupTests",
+            "description": "Set up tests in your project (Experimental)",
+            "sampleRequest": "add playwright tests to my project",
+            "when": "config.github.copilot.chat.setupTests.enabled",
+            "disambiguation": [
+              {
+                "category": "set_up_tests",
+                "description": "The user wants to configure project test setup, framework, or test runner. The user does not want to fix their existing tests.",
+                "examples": [
+                  "Set up tests for this project."
+                ]
+              }
+            ]
+          }
+        ],
+        "disambiguation": []
+      },
+      "timestamp": 1774607147034,
+      "modelId": "copilot/auto",
+      "modeInfo": {
+        "kind": "agent",
+        "isBuiltin": true,
+        "modeId": "agent",
+        "modeName": "agent",
+        "permissionLevel": "default"
+      },
+      "responseId": "response_8c69bdd7-98ea-48e8-8604-929ae11cdb8f",
+      "modelState": {
+        "value": 2,
+        "completedAt": 1774637635272
+      },
+      "contentReferences": [],
+      "codeCitations": [],
+      "timeSpentWaiting": 30422440
+    }
+  ]
+}
