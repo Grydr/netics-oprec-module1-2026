@@ -1,0 +1,2 @@
+[api_servers]
+57.155.2.23 ansible_user=gryd ansible_port=22
