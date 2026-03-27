@@ -1,10 +1,14 @@
 # Modul 1 Oprec Netics 2026
 
 > **Nama:** Jalu Cahyo Senodiputro
+>
 > **NRP:** 5025241155
 
 > **Deployed VPS IP:** http://health-api.duckdns.org/health
+> 
 > **Docker Image:** https://hub.docker.com/repository/docker/grydr/health-api/general
+
+---
 
 ## Soal 1
 Buatlah API publik dengan endpoint /health yang menampilkan informasi sebagai berikut:
@@ -101,6 +105,7 @@ dan mendapat hasil
 Lakukan deployment API tersebut di dalam container pada VPS publik. Gunakan port selain 80 dan 443 untuk menjalankan API.
 
 > IP VPS: 57.155.2.23
+> 
 > PORT: 8080
 
 Buat Dockerfile untuk membuat docker image yang bisa di push ke Docker Hub
