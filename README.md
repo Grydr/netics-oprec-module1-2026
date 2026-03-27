@@ -3,7 +3,7 @@
 > **Nama:** Jalu Cahyo Senodiputro
 > **NRP:** 5025241155
 
-> **Deployed VPS IP:** http://57.155.2.23/health
+> **Deployed VPS IP:** http://health-api.duckdns.org/health
 > **Docker Image:** https://hub.docker.com/repository/docker/grydr/health-api/general
 
 ## Soal 1
