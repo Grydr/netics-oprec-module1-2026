@@ -35,7 +35,7 @@ func getHealth(c *gin.Context) {
 	response := gin.H{
 		"nama":      "Jalu Cahyo Senodiputro",
 		"nrp":       "5025241155",
-		"status":    "Sedang Demo",
+		"status":    "Sudah Demo ygy",
 		"timestamp": formatTimestamp(time.Now()),
 		"uptime":    formatUptime(time.Since(startTime)),
 	}

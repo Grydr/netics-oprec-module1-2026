@@ -54,15 +54,13 @@ jobs:
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-          API_BIND_PORT: ${{ secrets.API_BIND_PORT }}
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
-          passphrase: ${{ secrets.VPS_SSH_PASSPHRASE }}
           port: ${{ secrets.VPS_PORT }}
           script_stop: true
-          envs: DOCKERHUB_USERNAME,DOCKERHUB_TOKEN,API_BIND_PORT
+          envs: DOCKERHUB_USERNAME,DOCKERHUB_TOKEN
           script: |
             set -euo pipefail
             if [ -n "$DOCKERHUB_USERNAME" ] && [ -n "$DOCKERHUB_TOKEN" ]; then
@@ -72,5 +70,5 @@ jobs:
               docker pull "$DOCKERHUB_USERNAME/health-api:latest"
               docker rm -f health-api >/dev/null 2>&1 || true
               docker run -d --name health-api --restart unless-stopped \
-              -p "127.0.0.1:${API_BIND_PORT:-8080}:8080" \
+              -p "127.0.0.1:8080:8080" \
               "$DOCKERHUB_USERNAME/health-api:latest"
